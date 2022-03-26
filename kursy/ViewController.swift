@@ -8,6 +8,8 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var NBPManager = NBPManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()

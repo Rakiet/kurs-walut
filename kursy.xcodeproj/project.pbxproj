@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08217ED027EF146D0079C769 /* NBPManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08217ECF27EF146D0079C769 /* NBPManager.swift */; };
 		086F2C9827ECF8140012D3D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F2C9727ECF8140012D3D3 /* AppDelegate.swift */; };
 		086F2C9A27ECF8140012D3D3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F2C9927ECF8140012D3D3 /* SceneDelegate.swift */; };
 		086F2C9C27ECF8140012D3D3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086F2C9B27ECF8140012D3D3 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08217ECF27EF146D0079C769 /* NBPManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBPManager.swift; sourceTree = "<group>"; };
 		086F2C9427ECF8140012D3D3 /* kursy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kursy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		086F2C9727ECF8140012D3D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		086F2C9927ECF8140012D3D3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08217ECE27EF14260079C769 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08217ECF27EF146D0079C769 /* NBPManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		086F2C8B27ECF8130012D3D3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +66,7 @@
 		086F2C9627ECF8140012D3D3 /* kursy */ = {
 			isa = PBXGroup;
 			children = (
+				08217ECE27EF14260079C769 /* Model */,
 				086F2C9727ECF8140012D3D3 /* AppDelegate.swift */,
 				086F2C9927ECF8140012D3D3 /* SceneDelegate.swift */,
 				086F2C9B27ECF8140012D3D3 /* ViewController.swift */,
@@ -140,6 +151,7 @@
 			files = (
 				086F2C9C27ECF8140012D3D3 /* ViewController.swift in Sources */,
 				086F2C9827ECF8140012D3D3 /* AppDelegate.swift in Sources */,
+				08217ED027EF146D0079C769 /* NBPManager.swift in Sources */,
 				086F2C9A27ECF8140012D3D3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
