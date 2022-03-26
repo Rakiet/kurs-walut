@@ -9,10 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var NBPManager = NBPManager()
+    var nbpManager = NBPManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //test URLSession
+        nbpManager.fetchCurrency(tableName: "a")
         // Do any additional setup after loading the view.
     }
 
