@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NBPData: Decodable{
+struct NBPData: Codable{
     
     let table: String
     let no: String
@@ -15,7 +15,7 @@ struct NBPData: Decodable{
     let rates: [Rates]
 }
 
-struct Rates: Decodable{
+struct Rates: Codable{
     let currency: String
     let code: String
     let mid: Double
