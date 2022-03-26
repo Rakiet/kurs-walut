@@ -7,8 +7,14 @@
 
 import Foundation
 
+protocol NBPManagerDelegate {
+    func didUpdateNBP(nbp: NBPModel)
+}
+
 struct NBPManager{
     let NBPURL = "https://api.nbp.pl/api/exchangerates/tables"
+    
+    var delegate: NBPManagerDelegate?
     
     func fetchCurrency(tableName:String){
         let ulrString = "\(NBPURL)/\(tableName)/?format=json"
@@ -34,7 +40,9 @@ struct NBPManager{
 //                    let dataString = String(data: safeDate, encoding: .utf8)
 //                    print(dataString)
                     
-                    self.parseJSON(nbpData: safeDate)
+                    if let nbp = self.parseJSON(nbpData: safeDate){
+                        self.delegate?.didUpdateNBP(nbp: nbp)
+                    }
                 }
             }
             
@@ -44,13 +52,22 @@ struct NBPManager{
         }
     }
     
-    func parseJSON(nbpData: Data){
+    func parseJSON(nbpData: Data) -> NBPModel?{
         let decoder = JSONDecoder()
         do{
             let decodedData = try decoder.decode([NBPData].self, from: nbpData)
             
+
+            let table = decodedData[0].table
+            let no = decodedData[0].no
+            let effectiveDate = decodedData[0].effectiveDate
+            let rates = decodedData[0].rates
+
+            let nbp = NBPModel(table: table, no: no, effectiveDate: effectiveDate, rates: rates)
+            return nbp
         }catch{
             print(error)
+            return nil
         }
     }
     

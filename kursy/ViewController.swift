@@ -7,17 +7,21 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, NBPManagerDelegate {
     
     var nbpManager = NBPManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         //test URLSession
+        nbpManager.delegate = self
         nbpManager.fetchCurrency(tableName: "a")
+        
         // Do any additional setup after loading the view.
     }
 
-
+    func didUpdateNBP(nbp: NBPModel){
+        print(nbp.table)
+    }
 }
 
