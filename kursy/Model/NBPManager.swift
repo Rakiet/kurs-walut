@@ -11,7 +11,7 @@ struct NBPManager{
     let NBPURL = "https://api.nbp.pl/api/exchangerates/tables"
     
     func fetchCurrency(tableName:String){
-        let ulrString = "\(NBPURL)/\(tableName)"
+        let ulrString = "\(NBPURL)/\(tableName)/?format=json"
         performRequest(urlString: ulrString)
         
     }
@@ -23,7 +23,20 @@ struct NBPManager{
             let session = URLSession(configuration: .default)
             
             //Give the session a task
-            let task = session.dataTask(with: url, completionHandler: handle(data:response:error:))
+            
+            let task = session.dataTask(with: url) { data, response, error in
+                if error != nil{
+                    print(error!)
+                    return
+                }
+                
+                if let safeDate = data {
+//                    let dataString = String(data: safeDate, encoding: .utf8)
+//                    print(dataString)
+                    
+                    self.parseJSON(nbpData: safeDate)
+                }
+            }
             
             //Start task
             task.resume()
@@ -31,16 +44,14 @@ struct NBPManager{
         }
     }
     
-    func handle(data: Data?, response: URLResponse?, error: Error?){
-        if error != nil{
-            print(error!)
-            return
+    func parseJSON(nbpData: Data){
+        let decoder = JSONDecoder()
+        do{
+            let decodedData = try decoder.decode([NBPData].self, from: nbpData)
+            
+        }catch{
+            print(error)
         }
-        
-        if let safeDate = data {
-            let dataString = String(data: safeDate, encoding: .utf8)
-            print(dataString)
-        }
-        
     }
+    
 }
