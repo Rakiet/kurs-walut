@@ -11,11 +11,17 @@ import UIKit
 class CurrencyCell: UITableViewCell {
 
     @IBOutlet weak var currencyImageView: UIImageView!
-    @IBOutlet weak var currencyLabelView: UILabel!
+    @IBOutlet weak var currencyCodeLabelView: UILabel!
+    @IBOutlet weak var currencyDateLabelView: UILabel!
+    @IBOutlet weak var currencyNameLabelView: UILabel!
+    @IBOutlet weak var currencyValueLabelView: UILabel!
     
-    func setCurrencyCell(data: Rates){
+    func setCurrencyCell(data: Rates, date: String){
         currencyImageView.image = UIImage(named: data.code)
-        currencyLabelView.text = data.currency
+        currencyCodeLabelView.text = data.code
+        currencyDateLabelView.text = date
+        currencyNameLabelView.text = data.currency.capitalized
+        currencyValueLabelView.text = "1 \(data.code) = \(data.mid) PLN"
         
     }
     
