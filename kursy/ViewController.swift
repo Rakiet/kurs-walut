@@ -86,7 +86,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
             
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 if let rate = nbpData?.rates[indexPath.row]{
-                    dvc.sentData = rate.code as String
+                    dvc.sentData1 = rate as Rates
+                    dvc.sentData2 = (nbpData?.effectiveDate)! as String
                 }
                 
             }
