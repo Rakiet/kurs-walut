@@ -14,6 +14,7 @@
 		086F2C9F27ECF8140012D3D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086F2C9D27ECF8140012D3D3 /* Main.storyboard */; };
 		086F2CA127ECF8140012D3D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 086F2CA027ECF8140012D3D3 /* Assets.xcassets */; };
 		086F2CA427ECF8140012D3D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 086F2CA227ECF8140012D3D3 /* LaunchScreen.storyboard */; };
+		087954DD27F05009005A5A76 /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087954DC27F05009005A5A76 /* CurrencyCell.swift */; };
 		087C1D4327EF2D3C007D112F /* NBPData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C1D4227EF2D3C007D112F /* NBPData.swift */; };
 		087C1D4527EF42F5007D112F /* NBPModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C1D4427EF42F5007D112F /* NBPModel.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		086F2CA027ECF8140012D3D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		086F2CA327ECF8140012D3D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		086F2CA527ECF8140012D3D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		087954DC27F05009005A5A76 /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		087C1D4227EF2D3C007D112F /* NBPData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBPData.swift; sourceTree = "<group>"; };
 		087C1D4427EF42F5007D112F /* NBPModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NBPModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,6 +77,7 @@
 				08217ECE27EF14260079C769 /* Model */,
 				086F2C9727ECF8140012D3D3 /* AppDelegate.swift */,
 				086F2C9927ECF8140012D3D3 /* SceneDelegate.swift */,
+				087954DC27F05009005A5A76 /* CurrencyCell.swift */,
 				086F2C9B27ECF8140012D3D3 /* ViewController.swift */,
 				086F2C9D27ECF8140012D3D3 /* Main.storyboard */,
 				086F2CA027ECF8140012D3D3 /* Assets.xcassets */,
@@ -159,6 +162,7 @@
 				087C1D4327EF2D3C007D112F /* NBPData.swift in Sources */,
 				087C1D4527EF42F5007D112F /* NBPModel.swift in Sources */,
 				086F2C9827ECF8140012D3D3 /* AppDelegate.swift in Sources */,
+				087954DD27F05009005A5A76 /* CurrencyCell.swift in Sources */,
 				08217ED027EF146D0079C769 /* NBPManager.swift in Sources */,
 				086F2C9A27ECF8140012D3D3 /* SceneDelegate.swift in Sources */,
 			);
