@@ -11,6 +11,8 @@ class ViewController: UIViewController, NBPManagerDelegate  {
     
     @IBOutlet weak var segmentControlOutlet: UISegmentedControl!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     var nbpManager = NBPManager()
 
     var nbpData: NBPModel?
@@ -20,14 +22,13 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         //test URLSession
         nbpManager.delegate = self
         nbpManager.fetchCurrency(tableName: "a")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
         
-        // Do any additional setup after loading the view.
+//        nbpData = NBPModel(table: "a", no: "a", effectiveDate: "as", rates: [Rates(currency: "PL", code: "PL", mid: 2.90)])
+        
     }
-    
-    
-    
-    
-   
     
 
     @IBAction func segmentControlAction(_ sender: Any) {
@@ -51,8 +52,29 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         for i in nbp.rates{
             print(i.mid)
             print(i.currency)
+            print(i.code)
             print("===========")
         }
+        tableView.reloadData()
     }
+}
+
+extension ViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return nbpData?.rates.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rate = nbpData?.rates[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyCell
+    
+        cell.setCurrencyCell(data: rate!)
+        
+        return cell
+    
+    }
+    
+    
 }
 

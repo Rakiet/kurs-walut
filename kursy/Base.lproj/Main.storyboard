@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="191" width="414" height="705"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="LZQ-sb-rZG" customClass="CurrencyCell" customModule="kursy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CurrencyCell" id="LZQ-sb-rZG" customClass="CurrencyCell" customModule="kursy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LZQ-sb-rZG" id="87g-zK-XNg">
@@ -74,7 +74,7 @@
                     <navigationItem key="navigationItem" id="3iJ-2T-jzp"/>
                     <connections>
                         <outlet property="segmentControlOutlet" destination="Xql-NW-A5w" id="kJk-d8-ebU"/>
-                        <outlet property="tableViewOutlet" destination="Igc-y7-Lqt" id="fNG-ee-Vho"/>
+                        <outlet property="tableView" destination="Igc-y7-Lqt" id="8q5-OC-rPT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
