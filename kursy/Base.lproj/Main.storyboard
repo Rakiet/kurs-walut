@@ -87,6 +87,7 @@
                                             <outlet property="currencyImageView" destination="oXj-dN-K87" id="H5f-FL-1LU"/>
                                             <outlet property="currencyNameLabelView" destination="pfS-ZB-d1O" id="Vx2-FV-s9a"/>
                                             <outlet property="currencyValueLabelView" destination="FVj-nK-gFg" id="yEF-Ty-v7C"/>
+                                            <segue destination="me6-s7-bN7" kind="show" identifier="showDetail" id="3Hn-SM-NOh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -124,16 +125,17 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="49.553571428571423"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail View Controller-->
         <scene sceneID="5hV-Bd-CCj">
             <objects>
-                <viewController id="me6-s7-bN7" sceneMemberID="viewController">
+                <viewController id="me6-s7-bN7" customClass="DetailViewController" customModule="kursy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ASE-bg-ok4">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="9Th-Pt-JIE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="IVn-sC-Ctw"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SOM-NX-NWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

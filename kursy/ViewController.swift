@@ -57,6 +57,9 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         }
         tableView.reloadData()
     }
+    
+    
+    
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
@@ -69,10 +72,29 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyCell
     
-        cell.setCurrencyCell(data: rate!)
+        cell.setCurrencyCell(data: rate!, date: nbpData!.effectiveDate)
         
         return cell
     
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "showDetail") {
+            
+            let dvc = segue.destination as! DetailViewController
+            
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                if let rate = nbpData?.rates[indexPath.row]{
+                    dvc.sentData = rate.code as String
+                }
+                
+            }
+            
+        }
+        
+        
+        
     }
     
     
