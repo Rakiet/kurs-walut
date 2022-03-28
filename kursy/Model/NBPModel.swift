@@ -21,4 +21,12 @@ struct RatesModel{
     let mid: Double
 }
 
+struct NBPModelDetail: Codable{
+    let table: String
+    let currency: String
+    let code: String
+    let rates: [RatesDetail]
+    
+}
+
 
