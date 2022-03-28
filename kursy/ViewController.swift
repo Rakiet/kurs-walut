@@ -88,6 +88,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                 if let rate = nbpData?.rates[indexPath.row]{
                     dvc.sentData1 = rate as Rates
                     dvc.sentData2 = (nbpData?.effectiveDate)! as String
+                    dvc.sentData3 = nbpData! as NBPModel
                 }
                 
             }
