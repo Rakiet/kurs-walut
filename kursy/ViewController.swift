@@ -10,14 +10,19 @@ import UIKit
 
 class ViewController: UIViewController, NBPManagerDelegate  {
     
+    
+    
     @IBOutlet weak var segmentControlOutlet: UISegmentedControl!
     
     @IBOutlet weak var tableView: UITableView!
     
-    
+    //przypisanie do zmiennej NBPManager
     var nbpManager = NBPManager()
 
+    //zmienna przechowujace dane pobrane z api
     var nbpData: NBPModel?
+    
+    //przypisanie zmiennej Extra()
     var extra = Extra()
     
     
@@ -27,15 +32,11 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         nbpManager.fetchCurrency(tableName: "a")
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.reloadData()
         
         // wywołanie fukcji odpowiedzialnej za stworzenie spinera ladowania
         extra.prepareactivityIndicator(sentView: view)
-        
+        //uruchomienie animacji spinera
         self.extra.activityIndicator!.startAnimating()
-        
-//        nbpData = NBPModel(table: "a", no: "a", effectiveDate: "as", rates: [Rates(currency: "PL", code: "PL", mid: 2.90)])
-        
     }
     
 
@@ -55,46 +56,53 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         }
         
     }
-    
-       
  
+    
     func didUpdateNBP(nbp: NBPModel){
         
-        nbpData = nbp
-        print("?????????????????????????????????")
-        print(nbp.table)
-        for i in nbp.rates{
-            print(i.mid)
-            print(i.currency)
-            print(i.code)
-            print("===========")
-        }
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.extra.activityIndicator!.stopAnimating()
-        }
-        
+            
+            DispatchQueue.main.async {
+                self.nbpData = nbp
+                self.tableView.reloadData()
+                self.extra.activityIndicator!.stopAnimating()
+            }
     }
     
-    //fukcji odpowiedzialnej za stworzenie spinera ladowania
-    
-    
-    
+    func didFailWithError(error: Error) {
+        print(error)
+        print("!!!!!!!!!!!!!!!!!!!!!!")
+        DispatchQueue.main.async {
+            self.present(self.extra.errorConnection(), animated: true, completion: nil)
+            self.extra.activityIndicator!.stopAnimating()
+            self.nbpData = nil
+            self.tableView.reloadData()
+            
+        }
+    }
     
     
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return nbpData?.rates.count ?? 0
+        if let ratesCount = nbpData?.rates.count{
+            return ratesCount
+        }else{
+            
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let rate = nbpData?.rates[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyCell
+        if let rate = nbpData?.rates[indexPath.row]{
+        
     
-        cell.setCurrencyCell(data: rate!, date: nbpData!.effectiveDate)
+        cell.setCurrencyCell(data: rate, date: nbpData!.effectiveDate)
+        
+        
+        }
         
         return cell
     
