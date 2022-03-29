@@ -14,11 +14,12 @@ class ViewController: UIViewController, NBPManagerDelegate  {
     
     @IBOutlet weak var tableView: UITableView!
     
+    
     var nbpManager = NBPManager()
 
     var nbpData: NBPModel?
+    var extra = Extra()
     
-    var activityIndicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,9 +30,9 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         tableView.reloadData()
         
         // wywołanie fukcji odpowiedzialnej za stworzenie spinera ladowania
-        prepareactivityIndicator()
+        extra.prepareactivityIndicator(sentView: view)
         
-        self.activityIndicator!.startAnimating()
+        self.extra.activityIndicator!.startAnimating()
         
 //        nbpData = NBPModel(table: "a", no: "a", effectiveDate: "as", rates: [Rates(currency: "PL", code: "PL", mid: 2.90)])
         
@@ -42,10 +43,10 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         DispatchQueue.main.async {
             switch self.segmentControlOutlet.selectedSegmentIndex{
             case 0:
-                self.activityIndicator!.startAnimating()
+                self.extra.activityIndicator!.startAnimating()
                 self.nbpManager.fetchCurrency(tableName: "a")
             case 1:
-                self.activityIndicator!.startAnimating()
+                self.extra.activityIndicator!.startAnimating()
                 self.nbpManager.fetchCurrency(tableName: "b")
                 
             default:
@@ -70,28 +71,12 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
-            self.activityIndicator!.stopAnimating()
+            self.extra.activityIndicator!.stopAnimating()
         }
         
     }
     
     //fukcji odpowiedzialnej za stworzenie spinera ladowania
-    func prepareactivityIndicator(){
-        if #available(iOS 13.0, *) {
-            activityIndicator = UIActivityIndicatorView(style: .large)
-            
-            activityIndicator!.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(activityIndicator!)
-            activityIndicator!.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            activityIndicator!.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        } else {
-            activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
-            activityIndicator!.translatesAutoresizingMaskIntoConstraints = false
-            view.addSubview(activityIndicator!)
-            activityIndicator!.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-            activityIndicator!.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        }
-    }
     
     
     
