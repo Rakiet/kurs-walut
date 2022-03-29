@@ -16,6 +16,7 @@ class CurrencyCell: UITableViewCell {
     @IBOutlet weak var currencyNameLabelView: UILabel!
     @IBOutlet weak var currencyValueLabelView: UILabel!
     
+    //funkcja odpowiedzialna za przekazanie widokowi zmiennych do wyswietlenia
     func setCurrencyCell(data: Rates, date: String){
         currencyImageView.image = UIImage(named: data.code)
         currencyCodeLabelView.text = data.code
