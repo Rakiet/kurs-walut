@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Ekran Główny-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="kursy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Ekran Główny" id="BYZ-38-t0r" customClass="ViewController" customModule="kursy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,8 +95,8 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xql-NW-A5w">
                                 <rect key="frame" x="20" y="152" width="374" height="32"/>
                                 <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Tabela A"/>
+                                    <segment title="Tabela B"/>
                                 </segments>
                                 <connections>
                                     <action selector="segmentControlAction:" destination="BYZ-38-t0r" eventType="valueChanged" id="4kp-vx-R5j"/>
@@ -115,7 +115,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Igc-y7-Lqt" secondAttribute="trailing" id="gec-BG-WuO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3iJ-2T-jzp"/>
+                    <navigationItem key="navigationItem" title="Ekran Główny" id="3iJ-2T-jzp"/>
                     <connections>
                         <outlet property="segmentControlOutlet" destination="Xql-NW-A5w" id="kJk-d8-ebU"/>
                         <outlet property="tableView" destination="Igc-y7-Lqt" id="8q5-OC-rPT"/>
@@ -125,7 +125,7 @@
             </objects>
             <point key="canvasLocation" x="928.98550724637687" y="49.553571428571423"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--Ekran Waluty-->
         <scene sceneID="5hV-Bd-CCj">
             <objects>
                 <viewController id="me6-s7-bN7" customClass="DetailViewController" customModule="kursy" customModuleProvider="target" sceneMemberID="viewController">
@@ -139,8 +139,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pki-2s-e3k">
+                            <textField opaque="NO" contentMode="scaleToFill" enabled="NO" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pki-2s-e3k">
                                 <rect key="frame" x="54.5" y="129" width="120" height="34"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="IpG-j2-OMV"/>
                                 </constraints>
@@ -158,6 +162,9 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dmn-0y-3Kr">
                                 <rect key="frame" x="274" y="129" width="120" height="34"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" button="YES" notEnabled="YES"/>
+                                </accessibility>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="NTb-4M-Qb8"/>
                                 </constraints>
@@ -173,10 +180,53 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lDO-W4-5hu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lDO-W4-5hu">
                                 <rect key="frame" x="0.0" y="226" width="414" height="670"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailViewCell" id="hQ0-57-31o" customClass="DetailViewCell" customModule="kursy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hQ0-57-31o" id="bhc-jA-Atg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SC-eq-09F">
+                                                    <rect key="frame" x="20" y="0.0" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 BAT = 0.4323 PLN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phl-JY-a9W">
+                                                    <rect key="frame" x="20" y="20.5" width="374" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HcW-Wv-lnj">
+                                                    <rect key="frame" x="356" y="0.0" width="38" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="HcW-Wv-lnj" secondAttribute="trailing" constant="20" id="2x2-KV-aUZ"/>
+                                                <constraint firstItem="HcW-Wv-lnj" firstAttribute="top" secondItem="bhc-jA-Atg" secondAttribute="top" id="6Ou-F3-mzx"/>
+                                                <constraint firstItem="0SC-eq-09F" firstAttribute="top" secondItem="bhc-jA-Atg" secondAttribute="top" id="B0I-Zz-2lm"/>
+                                                <constraint firstItem="phl-JY-a9W" firstAttribute="leading" secondItem="bhc-jA-Atg" secondAttribute="leading" constant="20" id="FiS-7n-DCv"/>
+                                                <constraint firstItem="0SC-eq-09F" firstAttribute="leading" secondItem="bhc-jA-Atg" secondAttribute="leading" constant="20" id="fIG-oZ-8kr"/>
+                                                <constraint firstAttribute="trailing" secondItem="phl-JY-a9W" secondAttribute="trailing" constant="20" id="g4n-Cp-4k6"/>
+                                                <constraint firstAttribute="bottom" secondItem="phl-JY-a9W" secondAttribute="bottom" constant="2" id="l6t-4J-Z8K"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabelDetailViewCell" destination="HcW-Wv-lnj" id="L3z-qQ-p6c"/>
+                                            <outlet property="midLabelDetailViewCell" destination="phl-JY-a9W" id="Wkp-Zn-kRp"/>
+                                            <outlet property="noLabelDetailViewCell" destination="0SC-eq-09F" id="uUi-JO-Qew"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqI-pD-VtB">
                                 <rect key="frame" x="40" y="183" width="334" height="38"/>
@@ -193,7 +243,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OS9-99-ETH">
                                 <rect key="frame" x="7" y="183" width="400" height="200"/>
                                 <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="FR8-Nh-fQc">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="FR8-Nh-fQc">
                                         <rect key="frame" x="0.0" y="0.0" width="400" height="169"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="169" id="gy9-7U-LdN"/>
@@ -232,10 +282,13 @@
                         <constraints>
                             <constraint firstItem="VWc-TW-MvU" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="15" id="22g-TJ-7oX"/>
                             <constraint firstItem="lqI-pD-VtB" firstAttribute="leading" secondItem="ASE-bg-ok4" secondAttribute="leadingMargin" constant="20" id="8oq-iW-khO"/>
+                            <constraint firstAttribute="bottom" secondItem="lDO-W4-5hu" secondAttribute="bottom" id="I07-7u-PYb"/>
                             <constraint firstItem="pki-2s-e3k" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="8" symbolic="YES" id="LzB-8B-WOa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lqI-pD-VtB" secondAttribute="trailing" constant="20" id="MHW-aa-OQn"/>
                             <constraint firstItem="9Th-Pt-JIE" firstAttribute="trailing" secondItem="eJE-d9-MvM" secondAttribute="trailing" constant="20" id="TrR-tt-LfW"/>
                             <constraint firstItem="aOJ-Rm-CbM" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="15" id="Wbe-vG-NpR"/>
+                            <constraint firstItem="lDO-W4-5hu" firstAttribute="trailing" secondItem="9Th-Pt-JIE" secondAttribute="trailing" id="ccG-Qz-ibk"/>
+                            <constraint firstItem="lDO-W4-5hu" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" id="iso-d1-wiD"/>
                             <constraint firstItem="9Th-Pt-JIE" firstAttribute="trailing" secondItem="Dmn-0y-3Kr" secondAttribute="trailing" constant="20" id="jAK-ge-ZdE"/>
                             <constraint firstItem="Dmn-0y-3Kr" firstAttribute="leading" secondItem="VWc-TW-MvU" secondAttribute="trailing" constant="10" id="jiH-sN-iZS"/>
                             <constraint firstItem="OS9-99-ETH" firstAttribute="top" secondItem="pki-2s-e3k" secondAttribute="bottom" constant="20" id="kQg-du-DMM"/>
@@ -244,11 +297,12 @@
                             <constraint firstItem="aOJ-Rm-CbM" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" constant="20" id="sd5-2b-qzI"/>
                             <constraint firstItem="eJE-d9-MvM" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" constant="20" id="tRp-xb-1CF"/>
                             <constraint firstItem="Dmn-0y-3Kr" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="8" symbolic="YES" id="ttn-DR-ghe"/>
+                            <constraint firstItem="lDO-W4-5hu" firstAttribute="top" secondItem="lqI-pD-VtB" secondAttribute="bottom" constant="5" id="wVb-15-eBH"/>
                             <constraint firstItem="eJE-d9-MvM" firstAttribute="top" secondItem="9Th-Pt-JIE" secondAttribute="top" constant="10" id="wcu-c4-HYk"/>
                             <constraint firstItem="lqI-pD-VtB" firstAttribute="top" secondItem="pki-2s-e3k" secondAttribute="bottom" constant="20" id="z5m-eM-20h"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="IVn-sC-Ctw"/>
+                    <navigationItem key="navigationItem" title="Ekran Waluty" id="IVn-sC-Ctw"/>
                     <connections>
                         <outlet property="datePickerOutlet" destination="FR8-Nh-fQc" id="UcZ-30-Nbd"/>
                         <outlet property="fromDateTextField" destination="pki-2s-e3k" id="Akm-xM-OBi"/>
