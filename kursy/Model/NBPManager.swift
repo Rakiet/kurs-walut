@@ -9,6 +9,7 @@ import Foundation
 
 protocol NBPManagerDelegate {
     func didUpdateNBP(nbp: NBPModel)
+    func didFailWithError(error: Error)
 }
 
 struct NBPManager{
@@ -32,22 +33,21 @@ struct NBPManager{
             
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil{
-                    print(error!)
+                    self.delegate?.didFailWithError(error: error!)
                     return
                 }
                 
                 if let safeDate = data {
-//                    let dataString = String(data: safeDate, encoding: .utf8)
-//                    print(dataString)
-                    
                     if let nbp = self.parseJSON(nbpData: safeDate){
                         self.delegate?.didUpdateNBP(nbp: nbp)
                     }
                 }
             }
-            
-            //Start task
             task.resume()
+            
+            
+            
+            
             
         }
     }
@@ -66,7 +66,7 @@ struct NBPManager{
             let nbp = NBPModel(table: table, no: no, effectiveDate: effectiveDate, rates: rates)
             return nbp
         }catch{
-            print(error)
+            delegate?.didFailWithError(error: error)
             return nil
         }
     }
