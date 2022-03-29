@@ -26,6 +26,7 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
     var choseFromDate: Bool?
     
     var nbpManagerDetail = NBPManagerDetail()
+    var nbpDataDetail: NBPModelDetail?
 
 
     override func viewDidLoad() {
@@ -40,6 +41,9 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         viewPicker.isHidden = true
         datePickerOutlet.maximumDate = setDateFromString(dateString: sentData2)
         datePickerOutlet.minimumDate = setDateFromString(dateString: "2002-01-02")
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
     }
 
 
@@ -47,18 +51,26 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
     
     
     @IBAction func startEditFromDate(_ sender: Any) {
+        view.endEditing(true)
         datePickerOutlet.setDate(setDateFromString(dateString: fromDateTextField.text!), animated: true)
         viewPicker.isHidden = false
         choseFromDate = true
     }
     @IBAction func startEditToDate(_ sender: Any) {
+        view.endEditing(true)
         datePickerOutlet.setDate(setDateFromString(dateString: toDateTextField.text!), animated: true)
         viewPicker.isHidden = false
         choseFromDate = false
     }
     
     
+   
+    
+    
+    
+    
     @IBAction func setDateInTextField(_ sender: Any) {
+        
         if let choseFrom = choseFromDate{
             if choseFrom{
                 fromDateTextField.text = setStringFromDate(date: datePickerOutlet.date)
@@ -114,10 +126,35 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
     }
     
     func didUpdateNBPDetail(nbp: NBPModelDetail) {
+        nbpDataDetail = nbp
         print("!!!!!!!!!!!!!!!!!")
         for i in nbp.rates{
             print(i.mid)
             print(i.effectiveDate)
         }
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+    
+   
+}
+
+
+extension DetailViewController: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return nbpDataDetail?.rates.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let rate = nbpDataDetail?.rates[indexPath.row]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetailViewCell") as! DetailViewCell
+    
+        cell.setDetailCell(data: rate!, code: nbpDataDetail!.code)
+        
+        return cell
+    
     }
 }
