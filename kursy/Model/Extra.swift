@@ -24,4 +24,18 @@ struct Extra {
         activityIndicator!.centerXAnchor.constraint(equalTo: sentView.centerXAnchor).isActive = true
         activityIndicator!.centerYAnchor.constraint(equalTo: sentView.centerYAnchor).isActive = true
     }
+    
+    func errorConnection() -> UIAlertController{
+        //utworzenie okna dialogowego
+        var dialogMessage = UIAlertController(title: "Błąd", message: "Nie można pobrać danych, sprawdz połączenie z internetem", preferredStyle: .alert)
+        // Utworzenie przycisku ok
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            print("ok button allert")
+         })
+        //Dodanie przycisku ok do okna dialogowego wiadomosci
+        dialogMessage.addAction(ok)
+        // Present Alert to
+        return dialogMessage
+//        self.present(dialogMessage, animated: true, completion: nil)
+    }
 }
