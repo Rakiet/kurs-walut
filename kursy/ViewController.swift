@@ -24,6 +24,7 @@ class ViewController: UIViewController, NBPManagerDelegate  {
     
     //przypisanie zmiennej Extra()
     var extra = Extra()
+    var openTableA = true
     
     
     override func viewDidLoad() {
@@ -46,9 +47,11 @@ class ViewController: UIViewController, NBPManagerDelegate  {
             case 0:
                 self.extra.activityIndicator!.startAnimating()
                 self.nbpManager.fetchCurrency(tableName: "a")
+                self.openTableA = true
             case 1:
                 self.extra.activityIndicator!.startAnimating()
                 self.nbpManager.fetchCurrency(tableName: "b")
+                self.openTableA = false
                 
             default:
                 break
@@ -57,10 +60,19 @@ class ViewController: UIViewController, NBPManagerDelegate  {
         
     }
  
+    @IBAction func refreshButton(_ sender: Any) {
+        DispatchQueue.main.async {
+            if self.openTableA{
+                self.nbpManager.fetchCurrency(tableName: "a")
+            }else{
+                self.nbpManager.fetchCurrency(tableName: "b")
+            }
+            self.extra.activityIndicator!.startAnimating()
+        }
+        
+    }
     
     func didUpdateNBP(nbp: NBPModel){
-        
-            
             DispatchQueue.main.async {
                 self.nbpData = nbp
                 self.tableView.reloadData()
@@ -69,13 +81,11 @@ class ViewController: UIViewController, NBPManagerDelegate  {
     }
     
     func didFailWithError(error: Error) {
-        print(error)
-        print("!!!!!!!!!!!!!!!!!!!!!!")
         DispatchQueue.main.async {
-            self.present(self.extra.errorConnection(), animated: true, completion: nil)
+            self.present(self.extra.errorAlert(textError: "Nie można pobrać danych, sprawdz połączenie z internetem"), animated: true, completion: nil) // jezeli błąd wywołaj alert
             self.extra.activityIndicator!.stopAnimating()
             self.nbpData = nil
-            self.tableView.reloadData()
+            self.tableView.reloadData()// wyczyszczenie table view
             
         }
     }
@@ -88,37 +98,25 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         if let ratesCount = nbpData?.rates.count{
             return ratesCount
         }else{
-            
             return 0
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyCell
-        if let rate = nbpData?.rates[indexPath.row]{
-        
-    
-        cell.setCurrencyCell(data: rate, date: nbpData!.effectiveDate)
-        
-        
+        if let rate = nbpData?.rates[indexPath.row], let date = nbpData?.effectiveDate{
+            cell.setCurrencyCell(data: rate, date: date)
         }
-        
         return cell
-    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if (segue.identifier == "showDetail") {
-            
             let dvc = segue.destination as! DetailViewController
-            
             if let indexPath = self.tableView.indexPathForSelectedRow {
                 if let rate = nbpData?.rates[indexPath.row]{
                     dvc.sentData1 = rate as Rates
-                    dvc.sentData2 = (nbpData?.effectiveDate)! as String
-                    dvc.sentData3 = nbpData! as NBPModel
+                    dvc.sentData2 = nbpData! as NBPModel
                 }
                 
             }
