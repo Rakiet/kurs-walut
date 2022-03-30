@@ -25,9 +25,9 @@ struct Extra {
         activityIndicator!.centerYAnchor.constraint(equalTo: sentView.centerYAnchor).isActive = true
     }
     
-    func errorConnection() -> UIAlertController{
+    func errorAlert(textError: String) -> UIAlertController{
         //utworzenie okna dialogowego
-        var dialogMessage = UIAlertController(title: "Błąd", message: "Nie można pobrać danych, sprawdz połączenie z internetem", preferredStyle: .alert)
+        var dialogMessage = UIAlertController(title: "Błąd", message: textError, preferredStyle: .alert)
         // Utworzenie przycisku ok
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             print("ok button allert")
