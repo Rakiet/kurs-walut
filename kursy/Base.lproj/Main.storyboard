@@ -146,42 +146,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OS9-99-ETH">
-                                <rect key="frame" x="7" y="183" width="400" height="200"/>
-                                <subviews>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="FR8-Nh-fQc">
-                                        <rect key="frame" x="0.0" y="0.0" width="400" height="169"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="169" id="gy9-7U-LdN"/>
-                                        </constraints>
-                                        <locale key="locale" localeIdentifier="pl_PL"/>
-                                    </datePicker>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llw-5E-DG0">
-                                        <rect key="frame" x="0.0" y="169" width="400" height="31"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                        <color key="tintColor" systemColor="systemBackgroundColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Zatwierdź">
-                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                        </buttonConfiguration>
-                                        <connections>
-                                            <action selector="setDateInTextField:" destination="me6-s7-bN7" eventType="touchUpInside" id="1HD-cN-im0"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="FR8-Nh-fQc" firstAttribute="leading" secondItem="OS9-99-ETH" secondAttribute="leading" id="9bC-15-jAK"/>
-                                    <constraint firstItem="llw-5E-DG0" firstAttribute="top" secondItem="FR8-Nh-fQc" secondAttribute="bottom" id="FS3-wx-Feo"/>
-                                    <constraint firstAttribute="trailing" secondItem="FR8-Nh-fQc" secondAttribute="trailing" id="JWr-NL-sBK"/>
-                                    <constraint firstAttribute="height" constant="200" id="TBf-f8-5Lt"/>
-                                    <constraint firstItem="FR8-Nh-fQc" firstAttribute="top" secondItem="OS9-99-ETH" secondAttribute="top" id="adx-Gv-mKR"/>
-                                    <constraint firstAttribute="width" secondItem="OS9-99-ETH" secondAttribute="height" multiplier="180:90" id="jyk-YJ-Rxp"/>
-                                    <constraint firstAttribute="trailing" secondItem="llw-5E-DG0" secondAttribute="trailing" id="kgu-BY-2cP"/>
-                                    <constraint firstItem="llw-5E-DG0" firstAttribute="leading" secondItem="OS9-99-ETH" secondAttribute="leading" id="snQ-uD-YDh"/>
-                                    <constraint firstAttribute="bottom" secondItem="llw-5E-DG0" secondAttribute="bottom" id="vPC-bM-XAQ"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJE-d9-MvM">
                                 <rect key="frame" x="20" y="98" width="374" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
@@ -289,6 +253,42 @@
                                     <action selector="showData:" destination="me6-s7-bN7" eventType="touchUpInside" id="nhs-kI-bgn"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OS9-99-ETH">
+                                <rect key="frame" x="7" y="183" width="400" height="200"/>
+                                <subviews>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="FR8-Nh-fQc">
+                                        <rect key="frame" x="0.0" y="0.0" width="400" height="169"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="169" id="gy9-7U-LdN"/>
+                                        </constraints>
+                                        <locale key="locale" localeIdentifier="pl_PL"/>
+                                    </datePicker>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="llw-5E-DG0">
+                                        <rect key="frame" x="0.0" y="169" width="400" height="31"/>
+                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Zatwierdź">
+                                            <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="setDateInTextField:" destination="me6-s7-bN7" eventType="touchUpInside" id="1HD-cN-im0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="FR8-Nh-fQc" firstAttribute="leading" secondItem="OS9-99-ETH" secondAttribute="leading" id="9bC-15-jAK"/>
+                                    <constraint firstItem="llw-5E-DG0" firstAttribute="top" secondItem="FR8-Nh-fQc" secondAttribute="bottom" id="FS3-wx-Feo"/>
+                                    <constraint firstAttribute="trailing" secondItem="FR8-Nh-fQc" secondAttribute="trailing" id="JWr-NL-sBK"/>
+                                    <constraint firstAttribute="height" constant="200" id="TBf-f8-5Lt"/>
+                                    <constraint firstItem="FR8-Nh-fQc" firstAttribute="top" secondItem="OS9-99-ETH" secondAttribute="top" id="adx-Gv-mKR"/>
+                                    <constraint firstAttribute="width" secondItem="OS9-99-ETH" secondAttribute="height" multiplier="180:90" id="jyk-YJ-Rxp"/>
+                                    <constraint firstAttribute="trailing" secondItem="llw-5E-DG0" secondAttribute="trailing" id="kgu-BY-2cP"/>
+                                    <constraint firstItem="llw-5E-DG0" firstAttribute="leading" secondItem="OS9-99-ETH" secondAttribute="leading" id="snQ-uD-YDh"/>
+                                    <constraint firstAttribute="bottom" secondItem="llw-5E-DG0" secondAttribute="bottom" id="vPC-bM-XAQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Th-Pt-JIE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
