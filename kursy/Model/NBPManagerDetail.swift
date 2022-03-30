@@ -10,11 +10,11 @@ import Foundation
 
 protocol NBPManagerDetailDelegate {
     func didUpdateNBPDetail(nbp: NBPModelDetail)
+    func didFailWithErrorDetail(error: Error)
 }
 
 struct NBPManagerDetail{
     let NBPURLDetail = "https://api.nbp.pl/api/exchangerates/rates"
-    //https://api.nbp.pl/api/exchangerates/rates/a/gbp/2012-01-01/2012-01-31/?format=json
     var delegate: NBPManagerDetailDelegate?
     
     func fetchCurrency(tableName:String,code: String, dateFromString: String, dateToString: String){
@@ -33,14 +33,10 @@ struct NBPManagerDetail{
             //Przypisanie session do task
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil{
-                    print(error!)
+                    self.delegate?.didFailWithErrorDetail(error: error!)
                     return
                 }
-                
                 if let safeDate = data {
-//                    let dataString = String(data: safeDate, encoding: .utf8)
-//                    print(dataString)
-                    
                     if let nbp = self.parseJSON(nbpDataDetail: safeDate){
                         self.delegate?.didUpdateNBPDetail(nbp: nbp)
                     }
@@ -67,7 +63,7 @@ struct NBPManagerDetail{
             let nbpDetail = NBPModelDetail(table: table, currency: currency, code: code, rates: rates)
             return nbpDetail
         }catch{
-            print(error)
+            delegate?.didFailWithErrorDetail(error: error)
             return nil
         }
     }
