@@ -27,7 +27,7 @@ struct Extra {
     
     func errorAlert(textError: String) -> UIAlertController{
         //utworzenie okna dialogowego
-        var dialogMessage = UIAlertController(title: "Błąd", message: textError, preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "Błąd", message: textError, preferredStyle: .alert)
         // Utworzenie przycisku ok
         let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
             print("ok button allert")
