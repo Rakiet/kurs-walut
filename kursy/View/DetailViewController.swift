@@ -60,15 +60,7 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         viewPicker.isHidden = false
         choseFromDate = false
     }
-    
-    
-   
-    
-    
-    
-    
     @IBAction func setDateInTextField(_ sender: Any) {
-        
         if let choseFrom = choseFromDate{
             if choseFrom{
                 fromDateTextField.text = setStringFromDate(date: datePickerOutlet.date)
@@ -78,8 +70,6 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         }
         viewPicker.isHidden = true
     }
-    
-    
     
     //Funckcja odpowiedzialna za zainicjowanie pobrania danych z API oraz sprawdzenie poprawności wysłanych danych
     @IBAction func showData(_ sender: Any) {
@@ -137,7 +127,7 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
             
         }
     }
-    
+    //ustawienia ladowane podczas ladowania widoku
     func setValueInView(){
         titleLabel.text = sentData1.currency.capitalized
         fromDateTextField.text = sentData2.effectiveDate
