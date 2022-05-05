@@ -6,8 +6,9 @@
 //
 
 import UIKit
-
+import Charts
 class DetailViewController: UIViewController, NBPManagerDetailDelegate {
+    @IBOutlet weak var lineChartView: LineChartView!
     
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,6 +22,8 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
     //Dane przesłane z poprzedniego widoku
     var sentData1:Rates!
     var sentData2:NBPModel!
+    
+   
     
     
     var choseFromDate: Bool?
@@ -115,6 +118,7 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.extra.activityIndicator!.stopAnimating()
+            self.updateLineChart()
         }
 
     }
@@ -135,6 +139,40 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         datePickerOutlet.maximumDate = setDateFromString(dateString: sentData2.effectiveDate)
         viewPicker.isHidden = true
         datePickerOutlet.minimumDate = setDateFromString(dateString: "2002-01-02")
+    }
+    
+    func updateLineChart(){
+        
+        if let nbpDataDetail = nbpDataDetail?.rates {
+            if nbpDataDetail.count < 5{
+                print("mniej niz 5")
+                lineChartView.isHidden = true
+                lineChartView.layer.frame.size.height = 1
+            }else{
+                
+                lineChartView.layer.frame.size.height = 300
+                lineChartView.isHidden = false
+                var lineChartEntry = [ChartDataEntry]()
+                for i in 0..<nbpDataDetail.count{
+                    let value = ChartDataEntry(x: Double(i), y: nbpDataDetail[i].mid)
+                    lineChartEntry.append(value)
+                }
+                let lineForChart1 = LineChartDataSet(entries: lineChartEntry, label: "Wykres dla \(sentData1.currency)")
+                lineForChart1.colors = [NSUIColor.blue]
+                lineForChart1.drawCirclesEnabled = false
+                lineForChart1.drawValuesEnabled = false
+               
+                
+                let data = LineChartData()
+                data.addDataSet(lineForChart1)
+                
+                lineChartView.data = data
+                lineChartView.chartDescription?.text = "Wykres dla \(sentData1.currency)"
+                lineChartView.backgroundColor = UIColor.white
+                lineChartView.animate(xAxisDuration: 1.0)
+            }
+            
+        }
     }
    
 }

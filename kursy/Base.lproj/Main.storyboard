@@ -187,8 +187,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqI-pD-VtB">
+                                <rect key="frame" x="40" y="183" width="334" height="38"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <color key="tintColor" systemColor="systemGray6Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Pokaż/Odśwież">
+                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showData:" destination="me6-s7-bN7" eventType="touchUpInside" id="nhs-kI-bgn"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czn-a4-KLt" customClass="LineChartView" customModule="Charts">
+                                <rect key="frame" x="0.0" y="562" width="414" height="300"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Efs-2v-IsW"/>
+                                </constraints>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lDO-W4-5hu">
-                                <rect key="frame" x="0.0" y="226" width="414" height="670"/>
+                                <rect key="frame" x="0.0" y="231" width="414" height="321"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailViewCell" id="hQ0-57-31o" customClass="DetailViewCell" customModule="kursy" customModuleProvider="target">
@@ -235,18 +254,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqI-pD-VtB">
-                                <rect key="frame" x="40" y="183" width="334" height="38"/>
-                                <color key="backgroundColor" systemColor="systemGreenColor"/>
-                                <color key="tintColor" systemColor="systemGray6Color"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Pokaż/Odśwież">
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="showData:" destination="me6-s7-bN7" eventType="touchUpInside" id="nhs-kI-bgn"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OS9-99-ETH">
                                 <rect key="frame" x="7" y="183" width="400" height="200"/>
                                 <subviews>
@@ -289,22 +296,25 @@
                         <constraints>
                             <constraint firstItem="VWc-TW-MvU" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="15" id="22g-TJ-7oX"/>
                             <constraint firstItem="lqI-pD-VtB" firstAttribute="leading" secondItem="ASE-bg-ok4" secondAttribute="leadingMargin" constant="20" id="8oq-iW-khO"/>
-                            <constraint firstAttribute="bottom" secondItem="lDO-W4-5hu" secondAttribute="bottom" id="I07-7u-PYb"/>
+                            <constraint firstItem="czn-a4-KLt" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" id="984-s7-cb1"/>
+                            <constraint firstItem="lDO-W4-5hu" firstAttribute="trailing" secondItem="9Th-Pt-JIE" secondAttribute="trailing" id="Gx3-XK-V48"/>
+                            <constraint firstItem="czn-a4-KLt" firstAttribute="trailing" secondItem="9Th-Pt-JIE" secondAttribute="trailing" id="IsM-Rx-Ovf"/>
                             <constraint firstItem="pki-2s-e3k" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="8" symbolic="YES" id="LzB-8B-WOa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lqI-pD-VtB" secondAttribute="trailing" constant="20" id="MHW-aa-OQn"/>
+                            <constraint firstItem="lDO-W4-5hu" firstAttribute="top" secondItem="lqI-pD-VtB" secondAttribute="bottom" constant="10" id="OpB-2j-zyM"/>
                             <constraint firstItem="9Th-Pt-JIE" firstAttribute="trailing" secondItem="eJE-d9-MvM" secondAttribute="trailing" constant="20" id="TrR-tt-LfW"/>
                             <constraint firstItem="aOJ-Rm-CbM" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="15" id="Wbe-vG-NpR"/>
-                            <constraint firstItem="lDO-W4-5hu" firstAttribute="trailing" secondItem="9Th-Pt-JIE" secondAttribute="trailing" id="ccG-Qz-ibk"/>
-                            <constraint firstItem="lDO-W4-5hu" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" id="iso-d1-wiD"/>
+                            <constraint firstItem="czn-a4-KLt" firstAttribute="top" secondItem="lDO-W4-5hu" secondAttribute="bottom" constant="10" id="gkO-br-a2N"/>
                             <constraint firstItem="9Th-Pt-JIE" firstAttribute="trailing" secondItem="Dmn-0y-3Kr" secondAttribute="trailing" constant="20" id="jAK-ge-ZdE"/>
                             <constraint firstItem="Dmn-0y-3Kr" firstAttribute="leading" secondItem="VWc-TW-MvU" secondAttribute="trailing" constant="10" id="jiH-sN-iZS"/>
                             <constraint firstItem="OS9-99-ETH" firstAttribute="top" secondItem="pki-2s-e3k" secondAttribute="bottom" constant="20" id="kQg-du-DMM"/>
                             <constraint firstItem="OS9-99-ETH" firstAttribute="centerX" secondItem="ASE-bg-ok4" secondAttribute="centerX" id="lDc-aW-iEW"/>
+                            <constraint firstItem="lDO-W4-5hu" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" id="laY-fI-aUW"/>
+                            <constraint firstItem="czn-a4-KLt" firstAttribute="bottom" secondItem="9Th-Pt-JIE" secondAttribute="bottom" id="nEn-s8-0Uk"/>
                             <constraint firstItem="pki-2s-e3k" firstAttribute="leading" secondItem="aOJ-Rm-CbM" secondAttribute="trailing" constant="10" id="oNm-Uk-eVp"/>
                             <constraint firstItem="aOJ-Rm-CbM" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" constant="20" id="sd5-2b-qzI"/>
                             <constraint firstItem="eJE-d9-MvM" firstAttribute="leading" secondItem="9Th-Pt-JIE" secondAttribute="leading" constant="20" id="tRp-xb-1CF"/>
                             <constraint firstItem="Dmn-0y-3Kr" firstAttribute="top" secondItem="eJE-d9-MvM" secondAttribute="bottom" constant="8" symbolic="YES" id="ttn-DR-ghe"/>
-                            <constraint firstItem="lDO-W4-5hu" firstAttribute="top" secondItem="lqI-pD-VtB" secondAttribute="bottom" constant="5" id="wVb-15-eBH"/>
                             <constraint firstItem="eJE-d9-MvM" firstAttribute="top" secondItem="9Th-Pt-JIE" secondAttribute="top" constant="10" id="wcu-c4-HYk"/>
                             <constraint firstItem="lqI-pD-VtB" firstAttribute="top" secondItem="pki-2s-e3k" secondAttribute="bottom" constant="20" id="z5m-eM-20h"/>
                         </constraints>
@@ -313,6 +323,7 @@
                     <connections>
                         <outlet property="datePickerOutlet" destination="FR8-Nh-fQc" id="UcZ-30-Nbd"/>
                         <outlet property="fromDateTextField" destination="pki-2s-e3k" id="Akm-xM-OBi"/>
+                        <outlet property="lineChartView" destination="czn-a4-KLt" id="fjd-pw-QGJ"/>
                         <outlet property="tableView" destination="lDO-W4-5hu" id="DFg-lu-yMu"/>
                         <outlet property="titleLabel" destination="eJE-d9-MvM" id="jyO-gd-ou3"/>
                         <outlet property="toDateTextField" destination="Dmn-0y-3Kr" id="po2-dI-Ua0"/>
