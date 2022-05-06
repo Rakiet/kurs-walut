@@ -1,10 +1,13 @@
 # kurs-walut
 
+<img src="https://user-images.githubusercontent.com/25162169/167147424-77ce2347-d6f9-484f-9d68-5e1c5a11d612.gif" width="200">
+
 Aplikacja pobiera kursy walut udostępnionych przez NBP
 
 Pobierane dane są z dwóch tabel A oraz B
 
 <img src="https://user-images.githubusercontent.com/25162169/160901849-5a290eb8-5e67-4229-9fe5-c223a4b98798.png" width="200">
+
 
 Aplikazcja została zabezpieczona przed utratą połączenia
 
