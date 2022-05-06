@@ -1,8 +1,12 @@
 # kurs-walut
+Aplikacja wykorzystująca API NBP oraz framework Charts.
 
+UPDATE:
+Wygląd aplikacji po ostatniej aktualizacji, dodano kalkulator który umożliwia przewalutowanie.
+Dodano również wykres liniowy, any on był dostępny ilość danych w tabeli musi wynosić więcej niż 5
 <img src="https://user-images.githubusercontent.com/25162169/167147424-77ce2347-d6f9-484f-9d68-5e1c5a11d612.gif" width="200">
 
-Aplikacja pobiera kursy walut udostępnionych przez NBP
+Pozostała część funkcjonalności nie uległa zmianie
 
 Pobierane dane są z dwóch tabel A oraz B
 
