@@ -22,6 +22,8 @@ class ViewController: UIViewController, NBPManagerDelegate  {
     //zmienna przechowujace dane pobrane z api
     var nbpData: NBPModel?
     
+    var dataToPrepareCalcView: Rates?
+    
     //przypisanie zmiennej Extra()
     var extra = Extra()
     var openTableA = true
@@ -92,6 +94,14 @@ class ViewController: UIViewController, NBPManagerDelegate  {
     
     
 }
+extension ViewController : CurrencyCellDelegate {
+    func currencyCell(_ currencyCell: CurrencyCell, calcButtonTapped dataRatesToCalc: Rates) {
+        
+        dataToPrepareCalcView = dataRatesToCalc
+        performSegue(withIdentifier: "showCalc", sender: nil)
+        
+  }
+}
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -106,6 +116,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "CurrencyCell") as! CurrencyCell
         if let rate = nbpData?.rates[indexPath.row], let date = nbpData?.effectiveDate{
             cell.setCurrencyCell(data: rate, date: date)
+            cell.dataRatesToCalc = rate
+            cell.delegate = self
         }
         return cell
     }
@@ -121,6 +133,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
                 
             }
             
+        } else if(segue.identifier == "showCalc"){
+            let dvc = segue.destination as! CalcViewController
+            if let dataToPrepareCalcView = dataToPrepareCalcView{
+                dvc.sentData1 = dataToPrepareCalcView as Rates
+            }
         }
         
         
@@ -129,4 +146,5 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate{
     
     
 }
+
 
