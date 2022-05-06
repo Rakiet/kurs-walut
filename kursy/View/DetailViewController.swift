@@ -8,9 +8,9 @@
 import UIKit
 import Charts
 class DetailViewController: UIViewController, NBPManagerDetailDelegate {
-    @IBOutlet weak var lineChartView: LineChartView!
     
     
+    @IBOutlet weak var showLineCharOutletButton: UIBarButtonItem!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var fromDateTextField: UITextField!
     @IBOutlet weak var toDateTextField: UITextField!
@@ -118,7 +118,11 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         DispatchQueue.main.async {
             self.tableView.reloadData()
             self.extra.activityIndicator!.stopAnimating()
-            self.updateLineChart()
+            if (self.nbpDataDetail?.rates.count)! > 5{
+                self.showLineCharOutletButton.isEnabled = true
+            }else {
+                self.showLineCharOutletButton.isEnabled = false
+            }
         }
 
     }
@@ -141,39 +145,32 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         datePickerOutlet.minimumDate = setDateFromString(dateString: "2002-01-02")
     }
     
-    func updateLineChart(){
-        
-        if let nbpDataDetail = nbpDataDetail?.rates {
-            if nbpDataDetail.count < 5{
-                print("mniej niz 5")
-                lineChartView.isHidden = true
-                lineChartView.layer.frame.size.height = 1
-            }else{
-                
-                lineChartView.layer.frame.size.height = 300
-                lineChartView.isHidden = false
-                var lineChartEntry = [ChartDataEntry]()
-                for i in 0..<nbpDataDetail.count{
-                    let value = ChartDataEntry(x: Double(i), y: nbpDataDetail[i].mid)
-                    lineChartEntry.append(value)
-                }
-                let lineForChart1 = LineChartDataSet(entries: lineChartEntry, label: "Wykres dla \(sentData1.currency)")
-                lineForChart1.colors = [NSUIColor.blue]
-                lineForChart1.drawCirclesEnabled = false
-                lineForChart1.drawValuesEnabled = false
-               
-                
-                let data = LineChartData()
-                data.addDataSet(lineForChart1)
-                
-                lineChartView.data = data
-                lineChartView.chartDescription?.text = "Wykres dla \(sentData1.currency)"
-                lineChartView.backgroundColor = UIColor.white
-                lineChartView.animate(xAxisDuration: 1.0)
+    
+    @IBAction func showLineChart(_ sender: Any) {
+        performSegue(withIdentifier: "showStats", sender: nil)
+    }
+    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showStats") {
+            let dvc = segue.destination as! StatsViewController
+            if let nbpDataDetail = nbpDataDetail {
+                dvc.nbpDataDetail = nbpDataDetail as NBPModelDetail
+                print("tak")
             }
+            
+            
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                if let rate = nbpData?.rates[indexPath.row]{
+//                    dvc.sentData1 = rate as Rates
+//                    dvc.sentData2 = nbpData! as NBPModel
+//                }
+//
+//            }
             
         }
     }
+    
    
 }
 
