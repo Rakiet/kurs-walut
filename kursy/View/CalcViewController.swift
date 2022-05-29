@@ -24,6 +24,7 @@ class CalcViewController: UIViewController {
     
     var sentData1:Rates!
     
+    
     var isCurrencyChange = false
     
     var dataToPrepareCalcView: Rates?
