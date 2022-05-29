@@ -23,8 +23,7 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
     var sentData1:Rates!
     var sentData2:NBPModel!
     
-   
-    
+    var dataToPrepareCalcView: RatesDetail?
     
     var choseFromDate: Bool?
     
@@ -46,11 +45,9 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
         //uruchomienie animacji spinera
         self.extra.activityIndicator!.startAnimating()
     }
-
+    
 
     //max od do date moze wynosic 93 dni lub 367dni
-    
-    
     @IBAction func startEditFromDate(_ sender: Any) {
         view.endEditing(true)
         datePickerOutlet.setDate(setDateFromString(dateString: fromDateTextField.text!), animated: true)
@@ -168,6 +165,12 @@ class DetailViewController: UIViewController, NBPManagerDetailDelegate {
 //
 //            }
             
+        }else if(segue.identifier == "showCalcFromDetail"){
+            let dvc = segue.destination as! CalcViewController
+            if let dataToPrepareCalcView = dataToPrepareCalcView{
+                let sendDateToCalc = Rates(currency: dataToPrepareCalcView.no, code: sentData1.code, mid: dataToPrepareCalcView.mid)
+                dvc.sentData1 = sendDateToCalc as Rates
+            }
         }
     }
     
@@ -188,9 +191,20 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate{
         
         if let  rate = nbpDataDetail?.rates[indexPath.row], let code = nbpDataDetail?.code{
             cell.setDetailCell(data: rate, code: code)
+            cell.dataRatesToCalc = rate
+            cell.delegate = self
         }
         
         return cell
     
     }
+}
+extension DetailViewController: DetailCellDelegate{
+    func detailCell(_ detailCell: DetailViewCell, showCalcButtonAction dataRatesToCalc: RatesDetail) {
+        dataToPrepareCalcView = dataRatesToCalc
+        print("przejscie")
+        performSegue(withIdentifier: "showCalcFromDetail", sender: nil)
+    }
+    
+    
 }
