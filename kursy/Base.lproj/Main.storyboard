@@ -187,7 +187,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Igc-y7-Lqt">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Igc-y7-Lqt">
                                 <rect key="frame" x="0.0" y="147" width="414" height="749"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -378,15 +378,15 @@
                                     <action selector="showData:" destination="me6-s7-bN7" eventType="touchUpInside" id="nhs-kI-bgn"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lDO-W4-5hu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lDO-W4-5hu">
                                 <rect key="frame" x="0.0" y="231" width="414" height="631"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DetailViewCell" id="hQ0-57-31o" customClass="DetailViewCell" customModule="kursy" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hQ0-57-31o" id="bhc-jA-Atg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SC-eq-09F">
@@ -396,7 +396,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 BAT = 0.4323 PLN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phl-JY-a9W">
-                                                    <rect key="frame" x="20" y="20.5" width="374" height="21"/>
+                                                    <rect key="frame" x="20" y="21" width="374" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -407,18 +407,37 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QF-uW-nOg">
+                                                    <rect key="frame" x="147" y="49" width="120" height="30"/>
+                                                    <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="H9b-ZX-AWy"/>
+                                                        <constraint firstAttribute="width" constant="120" id="mXZ-zy-Nk4"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Kalkulator">
+                                                        <fontDescription key="titleFontDescription" type="system" weight="black" pointSize="14"/>
+                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </buttonConfiguration>
+                                                    <connections>
+                                                        <action selector="showCalcButtonAction:" destination="hQ0-57-31o" eventType="touchUpInside" id="xpO-LA-Mi4"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="HcW-Wv-lnj" secondAttribute="trailing" constant="20" id="2x2-KV-aUZ"/>
+                                                <constraint firstItem="9QF-uW-nOg" firstAttribute="bottom" secondItem="bhc-jA-Atg" secondAttribute="bottomMargin" id="2yL-oR-jte"/>
                                                 <constraint firstItem="HcW-Wv-lnj" firstAttribute="top" secondItem="bhc-jA-Atg" secondAttribute="top" id="6Ou-F3-mzx"/>
+                                                <constraint firstItem="9QF-uW-nOg" firstAttribute="centerX" secondItem="bhc-jA-Atg" secondAttribute="centerX" id="8KY-2b-6ZG"/>
+                                                <constraint firstItem="phl-JY-a9W" firstAttribute="top" secondItem="0SC-eq-09F" secondAttribute="bottom" constant="3" id="AsX-ca-Atm"/>
                                                 <constraint firstItem="0SC-eq-09F" firstAttribute="top" secondItem="bhc-jA-Atg" secondAttribute="top" id="B0I-Zz-2lm"/>
                                                 <constraint firstItem="phl-JY-a9W" firstAttribute="leading" secondItem="bhc-jA-Atg" secondAttribute="leading" constant="20" id="FiS-7n-DCv"/>
                                                 <constraint firstItem="0SC-eq-09F" firstAttribute="leading" secondItem="bhc-jA-Atg" secondAttribute="leading" constant="20" id="fIG-oZ-8kr"/>
                                                 <constraint firstAttribute="trailing" secondItem="phl-JY-a9W" secondAttribute="trailing" constant="20" id="g4n-Cp-4k6"/>
-                                                <constraint firstAttribute="bottom" secondItem="phl-JY-a9W" secondAttribute="bottom" constant="2" id="l6t-4J-Z8K"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="calcButton" destination="9QF-uW-nOg" id="MFW-lL-wlP"/>
                                             <outlet property="dateLabelDetailViewCell" destination="HcW-Wv-lnj" id="L3z-qQ-p6c"/>
                                             <outlet property="midLabelDetailViewCell" destination="phl-JY-a9W" id="Wkp-Zn-kRp"/>
                                             <outlet property="noLabelDetailViewCell" destination="0SC-eq-09F" id="uUi-JO-Qew"/>
@@ -504,6 +523,7 @@
                         <outlet property="toDateTextField" destination="Dmn-0y-3Kr" id="po2-dI-Ua0"/>
                         <outlet property="viewPicker" destination="OS9-99-ETH" id="V81-7g-NTo"/>
                         <segue destination="ipP-kc-J7b" kind="showDetail" identifier="showStats" id="69X-SO-sEP"/>
+                        <segue destination="fI0-fV-1Z9" kind="showDetail" identifier="showCalcFromDetail" id="EaC-oI-fao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SOM-NX-NWc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -529,6 +549,9 @@
             <point key="canvasLocation" x="-510" y="29"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="EaC-oI-fao"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.2.squarepath" catalog="system" width="128" height="89"/>
         <systemColor name="systemBackgroundColor">
